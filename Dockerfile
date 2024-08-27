@@ -10,6 +10,9 @@ COPY package*.json ./
 # Installer les dépendances
 RUN npm install --production
 
+# Creer le dossier de config
+RUN mkdir /configs
+
 # Copier le reste de l'application
 COPY . .
 

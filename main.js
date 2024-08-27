@@ -19,7 +19,7 @@ function authenticate(req, res, next) {
 
 // Récupérer la liste des statuts disponibles
 app.get('/status/list', (req, res) => {
-    fs.readFile('status.json', 'utf8', (err, data) => {
+    fs.readFile('/configs/status.json', 'utf8', (err, data) => {
         if (err) {
             res.status(500).json({ error: 'Unable to read status data' });
         } else {
@@ -31,7 +31,7 @@ app.get('/status/list', (req, res) => {
 
 // Récupérer le statut actuel
 app.get('/status', (req, res) => {
-    fs.readFile('currentStatus.json', 'utf8', (err, data) => {
+    fs.readFile('/configs/currentStatus.json', 'utf8', (err, data) => {
         if (err) {
             res.status(500).json({ error: 'Unable to read current status' });
         } else {
@@ -45,7 +45,7 @@ app.get('/status', (req, res) => {
 app.post('/admin/status/set', authenticate, (req, res) => {
     const newStatus = req.body.status;
 
-    fs.readFile('status.json', 'utf8', (err, data) => {
+    fs.readFile('/configs/status.json', 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({ error: 'Unable to read status data' });
         }
@@ -57,7 +57,7 @@ app.post('/admin/status/set', authenticate, (req, res) => {
             return res.status(400).json({ error: 'Invalid status' });
         }
 
-        fs.writeFile('currentStatus.json', JSON.stringify({ status: newStatus }), 'utf8', (err) => {
+        fs.writeFile('/configs/currentStatus.json', JSON.stringify({ status: newStatus }), 'utf8', (err) => {
             if (err) {
                 return res.status(500).json({ error: 'Unable to set new status' });
             }
