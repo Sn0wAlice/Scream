@@ -1,0 +1,10 @@
+[
+    {
+        "status": "ok",
+        "description": "everything is ok"
+    },
+    {
+        "status": "lockdown",
+        "description": "emergency lockdown"
+    }
+]

@@ -1,0 +1,8 @@
+version: '3'
+services:
+  myapp:
+    image: ghcr.io/Sn0wAlice/Scream:latest
+    environment:
+      - ADMIN_TOKEN=my-secret-token
+    ports:
+      - "3000:3000"
