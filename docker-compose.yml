@@ -1,7 +1,7 @@
 version: '3'
 services:
-  myapp:
-    image: ghcr.io/Sn0wAlice/Scream:latest
+  scream:
+    image: ghcr.io/sn0walice/scream:latest
     environment:
       - ADMIN_TOKEN=my-secret-token
     ports:
